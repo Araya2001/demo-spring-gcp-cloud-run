@@ -1,0 +1,13 @@
+spring:
+  mvc:
+    converters:
+      preferred-json-mapper: jackson
+  application:
+    name: DEMO-SPRING-GCP-CLOUD-RUN
+server:
+  http2:
+    enabled: true
+  port: ${PORT:8080}
+  netty:
+    connection-timeout: 45000
+    idle-timeout: 45000
