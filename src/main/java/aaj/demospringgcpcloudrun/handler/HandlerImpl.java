@@ -10,6 +10,7 @@ import reactor.core.publisher.Mono;
 public class HandlerImpl implements Handler {
     @Override
     public Mono<ServerResponse> getResponse(ServerRequest serverRequest) {
+        // Comentario Nueva Version
         return ServerResponse.ok().body(ResponseDTO.builder().property("Hello World").build(), ResponseDTO.class);
     }
 }

@@ -14,7 +14,6 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class Router {
     @Bean
     public RouterFunction<ServerResponse> route(Handler handler) {
-        return RouterFunctions.route(GET("/demo-spring-gcp-cloud-run/api/v1/hello"), handler::getResponse)
-                ;
+        return RouterFunctions.route(GET("/demo-spring-gcp-cloud-run/api/v1/hello"), handler::getResponse);
     }
 }
