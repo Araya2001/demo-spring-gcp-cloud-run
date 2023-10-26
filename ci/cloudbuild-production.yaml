@@ -1,10 +1,11 @@
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'us-docker.pkg.dev/$PROJECT_ID/github-containers/demo-spring-gcp-cloud-run:$TAG_NAME', '-f', 'Dockerfile-production', '--cache-from','us-docker.pkg.dev/$PROJECT_ID/github-containers/demo-spring-gcp-cloud-run:$TAG_NAME','.' ]
+    args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/github-containers/demo-spring-gcp-cloud-run:$COMMIT_SHA', '-f', 'Dockerfile-production', '--cache-from','us-central1-docker.pkg
+    .dev/$PROJECT_ID/github-containers/demo-spring-gcp-cloud-run:$COMMIT_SHA','.' ]
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'us-docker.pkg.dev/$PROJECT_ID/github-containers/demo-spring-gcp-cloud-run:$TAG_NAME' ]
+    args: [ 'push', 'us-central1-docker.pkg.dev/$PROJECT_ID/github-containers/demo-spring-gcp-cloud-run:$COMMIT_SHA' ]
   # Deploy container image to Cloud Run
 
   # Configuración de Costa Rica
@@ -13,12 +14,12 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'demo-spring-gcp-cloud-run'
+      - 'demo-spring-gcp-cloud-run-cr'
       - '--image'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/github-containers/demo-spring-gcp-cloud-run:$TAG_NAME'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/github-containers/demo-spring-gcp-cloud-run:$COMMIT_SHA'
       - '--region'
       - 'us-central1'
       - '--set-env-vars'
       - 'PROPERTY_FILE=production'
 images:
-  - 'us-docker.pkg.dev/$PROJECT_ID/github-containers/demo-spring-gcp-cloud-run:$TAG_NAME'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/github-containers/demo-spring-gcp-cloud-run:$COMMIT_SHA'
