@@ -15,7 +15,7 @@ steps:
       - 'deploy'
       - 'demo-spring-gcp-cloud-run-dev'
       - '--image'
-      - 'us-docker.pkg.dev/$PROJECT_ID/github-containers/demo-spring-gcp-cloud-run:$TAG_NAME'
+      - 'us-docker.pkg.dev/$PROJECT_ID/gcr.io/github-containers/demo-spring-gcp-cloud-run:$TAG_NAME'
       - '--region'
       - 'us-central1'
       - '--set-env-vars'
